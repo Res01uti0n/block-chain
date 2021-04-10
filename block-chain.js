@@ -30,14 +30,17 @@ class BlockChain {
     for (let i = 1; i < chain.length; i++) {
       const block = chain[i];
       const actualLastHash = chain[i - 1].hash;
+      const lastDifficulty = chain[i - 1].difficulty;
 
-      const { lastHash, hash, data, timestamp } = block;
+      const { lastHash, hash, data, timestamp, nonce, difficulty } = block;
 
       if (lastHash !== actualLastHash) return false;
 
-      const validateHash = cryptoHash(timestamp, lastHash, data);
+      const validateHash = cryptoHash(timestamp, lastHash, data, nonce, difficulty);
 
       if (hash !== validateHash) return false;
+
+      if (Math.abs(lastDifficulty - difficulty) > 1) return false;
     }
 
     return true;
