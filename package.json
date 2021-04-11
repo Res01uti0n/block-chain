@@ -10,6 +10,9 @@
     "start-redis": "redis-server --daemonize yes",
     "dev-peer": "cross-env GENERATE_PEER_PORT='true' ENV='development' nodemon index.js"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Res01uti0n/block-chain.git"
@@ -26,9 +29,11 @@
     "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "elliptic": "^6.5.4",
     "express": "^4.17.1",
     "hex-to-binary": "^1.0.1",
     "redis": "^3.1.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "uuid": "^8.3.2"
   }
 }
